@@ -1,0 +1,38 @@
+version: "3.4"
+
+services:
+  php-74_sf44:
+    build:
+      context: .
+      target: php_74
+    volumes:
+      - ./php-7.4_symfony-4.4:/srv/app
+    ports:
+      - "7444:8000"
+
+  php-74_sf54:
+    build:
+      context: .
+      target: php_74
+    volumes:
+      - ./php-7.4_symfony-5.4:/srv/app
+    ports:
+      - "7454:8000"
+
+  php-82_sf44:
+    build:
+      context: .
+      target: php_82
+    volumes:
+      - ./php-8.2_symfony-4.4:/srv/app
+    ports:
+      - "8244:8000"
+
+  php-82_sf62:
+    build:
+      context: .
+      target: php_82
+    volumes:
+      - ./php-8.2_symfony-6.2:/srv/app
+    ports:
+      - "8262:8000"

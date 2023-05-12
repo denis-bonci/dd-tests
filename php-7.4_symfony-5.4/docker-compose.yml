@@ -1,0 +1,21 @@
+version: "3.4"
+
+services:
+  php:
+    build:
+      context: .
+#      target: app_php
+    volumes:
+      - .:/srv/app
+    ports:
+      # HTTP
+      - target: 8000
+        published: 8000
+        protocol: tcp
+    extra_hosts:
+      # Ensure that host.docker.internal is correctly defined on Linux
+      - host.docker.internal:host-gateway
+#volumes:
+#  php_socket:
+#  caddy_data:
+#  caddy_config:
