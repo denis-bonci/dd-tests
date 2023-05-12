@@ -29,6 +29,11 @@ RUN set -eux; \
     && rm -rf /tmp/datadog-setup.php \
 ;
 
+COPY --link docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+
+ENTRYPOINT ["docker-entrypoint"]
+
 CMD ["symfony", "server:start"]
 
 
@@ -58,5 +63,10 @@ RUN set -eux; \
     && php /tmp/datadog-setup.php --php-bin=all --enable-appsec --enable-profiling \
     && rm -rf /tmp/datadog-setup.php \
 ;
+
+COPY --link docker-entrypoint.sh /usr/local/bin/docker-entrypoint
+RUN chmod +x /usr/local/bin/docker-entrypoint
+
+ENTRYPOINT ["docker-entrypoint"]
 
 CMD ["symfony", "server:start"]
